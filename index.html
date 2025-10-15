@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // الأرقام
+      const links = [
+        "https://api.whatsapp.com/send?phone=9647851523207&text=السلام%20عليكم",
+        "https://api.whatsapp.com/send?phone=9647876957656&text=السلام%20عليكم"
+      ];
+
+      // نخزن آخر رقم مستخدم بالـ localStorage
+      let lastIndex = localStorage.getItem("lastIndex");
+      if (lastIndex === null) {
+        lastIndex = 0;
+      } else {
+        lastIndex = (parseInt(lastIndex) + 1) % links.length;
+      }
+
+      // نخزن التحديث
+      localStorage.setItem("lastIndex", lastIndex);
+
+      // تحويل المستخدم للرابط بالدور
+      window.location.href = links[lastIndex];
+    </script>
+    <title>جاري تحويلك...</title>
+  </head>
+  <body>
+    <p>يرجى الانتظار، جاري توجيهك إلى واتساب...</p>
+  </body>
+</html>
